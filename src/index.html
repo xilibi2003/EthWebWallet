@@ -1,0 +1,203 @@
+<html>
+    <head>
+        <title>以太坊去中心化Web钱包</title>
+        <link rel="stylesheet" type="text/css" href="./style.css">
+    </head>
+    <body>
+        <div class="centerer" id="screen-account">
+            <div class="centered">
+                <h1>以太坊钱包 - 账号创建、导入</h1>
+                <hr />
+                <h2>加载账号Keystore文件</h2>
+                <table>
+                    <tr>
+                        <th>Keystore:</th>
+                        <td><div class="file" id="select-wallet-drop">把Json文件拖动到这里</div><input type="file" id="select-wallet-file" /></td>
+                    </tr>
+                    <tr>
+                        <th>密码:</th>
+                        <td><input type="password" placeholder="(password)" id="select-wallet-password" /></td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                        <td>
+                            <div id="select-submit-wallet" class="submit disable">解密</div>
+                        </td>
+                    </tr>
+                </table>
+
+                <hr />
+                <h2>助记词方式</h2>
+                <table>
+                    <tr>
+                        <th>助记词:</th>
+                        <td><input type="text" placeholder="(mnemonic phrase)" id="select-mnemonic-phrase" /></td>
+                    </tr>
+                    <tr>
+                        <th>Path:</th>
+                        <td><input type="text" placeholder="(path)" id="select-mnemonic-path" value="m/44'/60'/0'/0/0" /></td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                        <td>
+                            <div id="select-submit-mnemonic" class="submit">推倒</div>
+                        </td>
+                    </tr>
+                </table>
+
+                <hr />
+                <h2>私钥方式</h2>
+                <p>
+                </p>
+                <table>
+                    <tr>
+                        <th>私钥:</th>
+                        <td><input type="text" placeholder="(private key)" id="select-privatekey" /></td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                        <td>
+                            <div id="select-submit-privatekey" class="submit">加载私钥</div>
+                        </td>
+                    </tr>
+                </table>
+
+                <hr />
+                <h3>声明:</h3>
+                <p>
+                    这仅仅是一个钱包Demo，还有很多细节仍需完善， <b>使用请自担风险.</b>
+                </p>
+            </div>
+        </div>
+        <div class="centerer hidden" id="screen-loading">
+            <div class="centered">
+                <h1 id="loading-header"></h2>
+                <table>
+                    <tr>
+                        <th>进度:</th>
+                        <td>
+                            <input type="text" readonly="readonly" class="readonly" id="loading-status" value="" /></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                        <td>
+                            <div id="loading-cancel" class="submit">取消</div>
+                        </td>
+                    </tr>
+                </table>
+
+                <hr />
+                <h3>声明:</h3>
+                <p>
+                    这仅仅是一个钱包Demo，还有很多细节仍需完善， <b>使用请自担风险.</b>
+                </p>
+            </div>
+        </div>
+        <div class="centerer hidden" id="screen-wallet">
+            <div class="centered">
+                <h1>以太钱包<span id="wallet-username" class="username right"></span></h1>
+                <hr />
+                <h3>钱包详情:</h3>
+                <table>
+                    <tr>
+                        <th>地址:</th>
+                        <td>
+                            <input type="text" readonly="readonly" class="readonly" id="wallet-address" value="" /></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>余额:</th>
+                        <td>
+                            <input type="text" readonly="readonly" class="readonly" id="wallet-balance" value="0.0" /></div>
+                        </td>
+                    </tr>
+                    <tr>
+                      <th>TT Token:</th>
+                      <td>
+                          <input type="text" readonly="readonly" class="readonly" id="wallet-token-balance" value="0.0" /></div>
+                      </td>
+                    </tr>
+                    <tr>
+                        <th>Nonce:</th>
+                        <td>
+                            <input type="text" readonly="readonly" class="readonly" id="wallet-transaction-count" value="0" /></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                        <td>
+                            <div id="wallet-submit-refresh" class="submit">刷新</div>
+                        </td>
+                    </tr>
+                </table>
+                <h3>以太转账:</h3>
+                <table>
+                    <tr>
+                        <th>发送至:</th>
+                        <td><input type="text" placeholder="(target address)" id="wallet-send-target-address" /></td>
+                    </tr>
+                    <tr>
+                        <th>金额:</th>
+                        <td><input type="text" placeholder="(amount)" id="wallet-send-amount" /></td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                        <td>
+                            <div id="wallet-submit-send" class="submit disable">发送</div>
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>转移代币:</h3>
+                <table>
+                    <tr>
+                        <th>发送至:</th>
+                        <td><input type="text" placeholder="(target address)" id="wallet-token-send-target-address" /></td>
+                    </tr>
+                    <tr>
+                        <th>金额:</th>
+                        <td><input type="text" placeholder="(amount)" id="wallet-token-send-amount" /></td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                        <td>
+                            <div id="wallet-token-submit-send" class="submit disable">发送</div>
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>KeyStore 导出:</h3>
+                <table>
+                    <tr>
+                        <th>密码:</th>
+                        <td><input type="text" placeholder="(password)" id="save-keystore-file-pwd" /></td>
+                    </tr>
+
+                    <tr>
+                        <td> </td>
+                        <td>
+                            <div id="save-keystore" class="submit">导出</div>
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>交易信息：</h3>
+                <div id="wallet-activity" class="activity"></div>
+
+                <hr />
+                <h3>声明:</h3>
+                <p>
+                    这仅仅是一个钱包Demo，还有很多细节仍需完善， <b>使用请自担风险.</b>
+                </p>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="ethers-v4.min.js"></script>
+        <script type="text/javascript" src="jquery.min.js"></script>
+        <script type="text/javascript" src="page.js"></script>
+        <script type="text/javascript" src="FileSaver.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+
+    </body>
+</html>
